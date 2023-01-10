@@ -1,0 +1,21 @@
+name: download-artifact
+
+on: workflow_dispatch
+
+env:
+  FILE_NAME: hello-server
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v3
+      
+    - name: Download artifact for linux
+      uses: actions/download-artifact@v3
+      with:
+        name: linux
+        path: ./${{ env.FILE_NAME }}
